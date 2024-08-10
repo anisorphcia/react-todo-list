@@ -3,17 +3,19 @@ import { useState } from 'react'
 function TodoInput(props) {
     const { addTodo } = props
     function addTodoHandler() {
-        addTodo('some text')
+        addTodo(text)
+        setText('')
     }
-    const [count, setCount] = useState(0)
+    const [text, setText] = useState('')
 
-    function increase() {
-        setCount(count + 1)
+    function handleChangeText(event){
+        // 修改 text 内容
+        setText(event.target.value)
     }
     return (
         <div>
-            <button onClick={increase}>{count}</button>
-            <p onClick={addTodoHandler}>todo input</p>
+            <input value={text} onChange={handleChangeText}/>
+            <button onClick={addTodoHandler}>todo input</button>
         </div>
     )
 }

@@ -1,8 +1,13 @@
 import TodoInput from "./components/TodoInput"
 import TodoList from "./components/TodoList"
-import { useState } from 'react'
+import EffectTest from './components/EffectTest'
+import { useState, useEffect } from 'react'
 
 function App() {
+
+  useEffect(() => {
+    document.title = 'todo list'
+  })
 
   const [list, setList] = useState([
     { id: 1, text: 'todo 1' },
@@ -17,6 +22,7 @@ function App() {
 
   return (
     <div>
+      <EffectTest/>
       <TodoInput addTodo={addTodo} />
       {list.length && <TodoList foo="hello foo" list={list} />}
     </div>
